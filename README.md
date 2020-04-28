@@ -290,6 +290,7 @@ que encuentre ese número de salones, por ejemplo si tienes clases de 11:00 a 14
 12:00 a 15:00 y 14:30 a 16:00 el menor número de salones es 2.
 
 ### logica
+
 se realizo un mapa de bit en un array por cada media hora del dia (cada media hora inicia en 0)
 por cada schedule de los schedules totales de entrada
   se calcula los indices de inicio y fin de la clase
@@ -351,3 +352,7 @@ space complexity = o(48)
 ```
 
 <p>&nbsp;</p>
+
+## License
+
+[MIT.](./LICENSE) Copyright (c)
