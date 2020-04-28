@@ -5,7 +5,7 @@
 [![dev dependencies status](https://david-dm.org/gAmadorH/jaque-exercises/dev-status.svg)](https://david-dm.org/gAmadorH/jaque-exercises#info=devDependencies)
 [![license](https://img.shields.io/github/license/gAmadorH/jaque-exercises.svg?color=blue)](https://github.com/gAmadorH/jaque-exercises/blob/master/LICENSE)
 [![code style](https://img.shields.io/badge/code_style-eslint-blueviolet.svg)](https://eslint.org/)
-[![style guide](https://img.shields.io/badge/style_guide-airbnb-ff69b4.svg)](https://eslint.org/)
+[![style guide](https://img.shields.io/badge/style_guide-airbnb-ff69b4.svg)](https://github.com/airbnb/javascript)
 
 Technical test using Javascript
 
@@ -36,51 +36,50 @@ npm run lint
 
 Escribir una función que reciba un arreglo de números y obtenga el subarreglo más  
 grande en el que cada elemento del subarreglo sea mayor que el anterior. Por ejemplo si  
-el arreglo es [3,2,5,9,1,3] tiene regresar [2,5,9]  
+el arreglo es [3, 2, 5, 9, 1, 3] tiene regresar [2, 5, 9]  
 
 ### logica
 
-const { length } = array;
-se declaran un areglo aux1 de la misma longitud que el arr de entrada lleno de 1
-aux1 = [1, 1, 1, ...]
-se declaro un arr aux2 con cada elemento de arr de entrada como arreglos
-aux2 = [[element1], [element2], [element3], ...]
+1. se declara un arreglo `aux1` de la misma longitud que el `array` de entrada lleno de 1  
+ej. ```aux1 = [1, 1, 1, ..., 1]```  
+2. se declara un arreglo `aux2` con cada elemento del `array` de entrada como arreglos  
+eje. ```aux2 = [[element1], [element2], [element3], ..., [elementn]]  ```  
+3. se calcula la longitud de los sub arreglos acendentes posibles en en `array` de entrada y se almacenan en el `aux1`  
+ej.
 
-se calcula la longitud de los sub arreglos acendentes posibles en en arr de entrada y se almacenan en el auxiliar
-arr [0, 3, 2, 4]
-long [1, 2, 1, 3]
+```
+array = [0, 3, 2, 4]
+long = [1, 2, 1, 3]
 
-el primer sub array correspondiente al elemento 1 tiene longitud 1, debido que no hay elemento menor anterior a el [0]
-el segundo sub array corresponiende al elemento 2 tiene longitud 2, debido a que hay elementos menores anterior a el [0, 3]
-el tercer sub array corresponiende al elemento 3 tiene longitud 1, debido a que no hay elementos menores anterior a el [2]
-el cuarto sub array corresponiende al elemento 4 tiene longitud 3, debido a que hay elementos menores anterior a el [1, 3, 4]
+el primer sub array correspondiente al elemento 1 tiene longitud 1, debido que no hay elemento menor anterior a el [0]  
+el segundo sub array corresponiende al elemento 2 tiene longitud 2, debido a que hay elementos menores anterior a el [0, 3]  
+el tercer sub array corresponiende al elemento 3 tiene longitud 1, debido a que no hay elementos menores anterior a el [2]  
+el cuarto sub array corresponiende al elemento 4 tiene longitud 3, debido a que hay elementos menores anterior a el [1, 3, 4]  
+```
 
-encuentra la longitud del sub array maxima
-encuentra el indice correspondinte a esa longitud maxima
-devuelve el array acendente correspondiente a ese indice
+4. encuentra la longitud del sub array maxima  
+5. encuentra el indice correspondinte a esa longitud maxima  
+6. devuelve el array acendente correspondiente a ese indice  
 
-### complejidad
-
-time:
+### runtime complexity
 
 ```text
-aux1 = new Array(length).fill(1);     O(n)  
-aux2 = array.map((item) => [item]);   O(n)  
+aux1 = new Array(length).fill(1);       O(n)  
+aux2 = array.map((item) => [item]);     O(n)  
 
 for (let i = 1; i < length; i += 1) {  
-  for (let j = 0; j < i; j += 1) {    O(n^2)  
+  for (let j = 0; j < i; j += 1) {      O(n^2)  
   }  
 }
 
 runtime complexity = O(n^2)
 ```
 
-
-space:
+### space complexity
 
 ```
-const aux1 = new Array(length).fill(1);   O(n)
-const aux2 = array.map((item) => [item]); O(n)
+const aux1 = new Array(length).fill(1);       O(n)
+const aux2 = array.map((item) => [item]);     O(n)
 
 for (let i = 1; i < length; i += 1) {
   for (let j = 0; j < i; j += 1) {
@@ -91,22 +90,23 @@ for (let i = 1; i < length; i += 1) {
   }
 }
 
-ejemplo en el peor de los caoss
+ejemplo en el peor de los casos
+
 [0, 1, 2, 3, 4, ..., n]
 
-  aux2 = [
-    [0],
-    [0, 1],
-    [0, 1, 2],
-    [0, 1, 2, 3],
-    ....
-    [0, 1, 2, 3, .., n]
-  ]
+aux2 = [
+  [0],
+  [0, 1],
+  [0, 1, 2],
+  [0, 1, 2, 3],
+  ....
+  [0, 1, 2, 3, .., n]
+]
 
 space complexity = O(n^2)
 ```
-<p>&nbsp;</p>
 
+<p>&nbsp;</p>
 
 ## exercise 2 - sum range of values
 
@@ -116,33 +116,33 @@ que es el resultado de 3+4+5+6.
 
 ### logica
 
-defines una variable acumuladora
-total = 0
+1. se define una variable acumuladora `total` y es iniciala en 0  
+2. se empeiza a iterar desde el numero minimo `min` y se incrementa de uno en uno  
+2. se termina de iterar hasta hasta el numero maxico `max`  
+3. sumas al acumulador en cada iteracion `total += i`  
 
-empeizas un ciclo desde el numero minimo
-i = min
+### runtime complexity
 
-que termina hasta el numero maxico
-i <= max
+```text
+for (let i = min; i <= max; i += 1) {   O(max - min)
+}
 
-sumas al acumulador en cada iteracion
-total += i
+runtime complexity = O(max - min)
+```
 
-### complejidad
+### space complexity
 
-time:
+```text
+let total = 0;                            O(1)
 
-iteraciones n = max - nin
-runtime complexity = O(n)
-
-space:
-
-total = una variable
+for (let i = min; i <= max; i += 1) {
+  total += i;                             O(1)
+}
 
 space complexity = O(1)
+```
 
 <p>&nbsp;</p>
-
 
 ## exercise 3 - k-th largest element
 
@@ -152,24 +152,22 @@ es 2 debe regresar 8.
 
 ### logica
 
-remueves duplicados del array
-ordenas el array
-extraes el numero n desde el final
+1. remueves duplicados del array
+2. ordenas el array
+3. extraes el numero n desde el final
 
-### complejidad
+### runtime complexity
 
-```
-time:
-
+```text
 noDuplicates(arry)    O(n)   ver ejercio 4
 arr.sort()            O(nlog(n))
 
 runtime complexity = O(nlog(n))
 ```
 
-```
-space:
+### space complexity
 
+```text
 noDuplicates(arry)    O(n)   ver ejercio 4
 
 space complexity = O(n)
@@ -177,25 +175,20 @@ space complexity = O(n)
 
 <p>&nbsp;</p>
 
-
 ## exercise 4 - remove duplicate elements of array
 
 Escribe una función que reciba un arreglo de números y quite los elementos duplicados.  
 
 ### logica
 
-inicialisa un array vacio de salida
-output = []
+1. inicialisa un array vacio de salida `output = []`
+2. iteras sobre el array de entrada
+  2.1. por cada elemento verificas si este ya existe en el array de salida
+    2.2 si no existe lo insertas en el array de salida
 
-iteras sobre el array de entrada
-  por cada elemento verificas si este ya existe en el array de salida
-    si no existe lo insertas en el array de salida
+### runtime complexity
 
-### complejidad
-
-```
-time:
-
+```text
 input.forEach((element) => {          O(n)
   if (!output.includes(element)) {    O(1)
     output.push(element)              O(1)
@@ -205,14 +198,21 @@ input.forEach((element) => {          O(n)
 runtime complexity = O(n)
 ```
 
-```
-space:
+### space complexity
+
+```text
+const output = [];                    O(1)
+
+input.forEach((element) => {
+  if (!output.includes(element)) {
+    output.push(element)              O(n)
+  }
+})
 
 space complexity = O(n)  en el peor de los casos ninguno se repite
 ```
 
 <p>&nbsp;</p>
-
 
 ## exercise 5 - balance brackets and square brackets expression
 
@@ -221,8 +221,8 @@ cadena está bien balanceada, es decir, por cada paréntesis o corchete que abre
 al mismo nivel que que cierra. Por ejemplo si recibe ‘([])’ o ‘[()[]]’ tiene que regresar true y  
 si recibe ‘([)]’ tiene que regresar false.  
 
-
 ### logica
+
 inicalizas stack como arreglo vacio
 stack = []
 
@@ -245,39 +245,26 @@ from 0 to express.length
 despues de la iteracion la pila deberia quedar vacia
   si fue asi la bandera de balance es cambiado a verdadero
 
-### complejidad
+### runtime complexity
 
-```
-time:
-const array = expression.split('');  O(n)
+```text
+const array = expression.split('');                     O(n)
 
-for (let i = 0; i < array.length; i += 1) {    O(n)
-  if (['(', '['].includes(element)) {          O(1)
-    stack.push(element);                       O(1)
+for (let i = 0; i < array.length; i += 1) {             O(n)
+  if (['(', '['].includes(element)) {                   O(1)
+    stack.push(element);                                O(1)
   } else {
-    if (stack.length <= 0) {
-      break;
-    }
-
-    const currentElement = stack.pop();         O(1)
-
-    if (currentElement === '(' && element !== ')') {
-      break;
-    }
-
-    if (currentElement === '[' && element !== ']') {
-      break;
-    }
+    const currentElement = stack.pop();                 O(1)
   }
 }
 
 runtime complexity = o(n)
 ```
 
-```
-space:
+### space complexity
 
-const array = expression.split('');     O(n)
+```text
+const array = expression.split('');           O(n)
 const stack = [];
 let isBalanced = false;
 
@@ -286,29 +273,13 @@ for (let i = 0; i < array.length; i += 1) {
 
   if (['(', '['].includes(element)) {
     stack.push(element);                      O(n) en el peor de los casos (todos fueran elementos de entrada)
-  } else {
-    if (stack.length <= 0) {
-      break;
-    }
-
-    const currentElement = stack.pop();
-
-    if (currentElement === '(' && element !== ')') {
-      break;
-    }
-
-    if (currentElement === '[' && element !== ']') {
-      break;
-    }
   }
 }
 
 space complexity = o(n)
 ```
 
-
 <p>&nbsp;</p>
-
 
 ## exercise 6 - schedules and classrooms
 
@@ -327,19 +298,17 @@ por cada schedule de los schedules totales de entrada
 
   se calcula cual es el numero maxico en el mapa y se optiene el numero minimo de salones necesarios
 
-### complejidad
+### runtime complexity
 
-```
-time:
-
-schedules.forEach((schedule) => {                           O(n)
+```text
+schedules.forEach((schedule) => {                             O(n)
     const [hour1, half1] = schedule[0].split(':');
     const [hour2, half2] = schedule[1].split(':');
 
     const startIndex = 2 * hour1 + (half1 === '30' ? 1 : 0);
     const endIndex = 2 * hour2 + (half2 === '30' ? 1 : 0);
 
-    for (let i = startIndex; i <= endIndex; i += 1) {     O(n)
+    for (let i = startIndex; i <= endIndex; i += 1) {         O(n)
       map[i] += 1;
     }
   });
@@ -347,9 +316,9 @@ schedules.forEach((schedule) => {                           O(n)
 runtime complexity = o(n^2)
 ```
 
-```
-space:
+### space complexity
 
+```text
 const map = [
   0, 0, // 00:00 - 00:30   index 0, 1
   0, 0, // 01:00 - 01:30   index 2, 3
