@@ -5,7 +5,7 @@ const myModule = require('../src/5');
 
 const { describe, it } = mocha;
 
-describe('exercise 4 - remove duplicate elements of array', () => {
+describe('exercise 5 - balance brackets and square brackets expression', () => {
   describe('cases of success', () => {
     it('the simplest brackets test', () => {
       assert.equal(myModule('()'), true);
