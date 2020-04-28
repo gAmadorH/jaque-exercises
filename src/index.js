@@ -1,1 +1,1 @@
-module.exports = (n, m) => n + m;
+console.log('hello Jaque team');
